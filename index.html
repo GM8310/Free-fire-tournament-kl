@@ -1,44 +1,84 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Free Fire Tournament</title>
-<style>
+  <meta charset="UTF-8">
+  <title>Free Fire Tournament</title>
+  <style>
     body {
-        background-color: #Ob3d91;
-        font-family: Arial, sans-serif;
-        text-align: center;
-        color: white;
-    }
-    h1 {
-        margin-top: 50px;
-        font-size: 2.5em;
+      font-family: Arial, sans-serif;
+      background-color: #001a4d; /* dark blue */
+      color: white;
+      text-align: center;
+      padding: 20px;
     }
     .btn {
-        display: block;
-        width: 250px;
-        margin: 20px auto;
-        padding: 15px;
-        background-color: white;
-        color: #2874a6;
-        font-size: 18px;
-        font-weight: bold;
-        border: 2px solid #2874a6;
-        border-radius: 8px;
-        text-decoration: none;
-        transition: 0.3s;
+      background-color: #0040ff;
+      color: white;
+      padding: 12px 20px;
+      border: none;
+      border-radius: 8px;
+      font-size: 16px;
+      cursor: pointer;
+      margin: 10px;
+      transition: 0.3s;
     }
     .btn:hover {
-        background-color: #2874a6;
-        color: white;
+      background-color: #0033cc;
     }
-</style>
+    #countdown {
+      font-size: 24px;
+      margin-top: 40px;
+      padding: 10px;
+      border: 2px solid #fff;
+      display: inline-block;
+      border-radius: 10px;
+      background-color: rgba(0,0,0,0.3);
+    }
+  </style>
 </head>
 <body>
-    <h1>FREEFIRE TOURNAMENT</h1>
-    <a class="btn" href="tournament.html">Tournament</a>
-    <a class="btn" href="rules.html">Rules & Regulations</a>
-    <a class="btn" href="giftcard.html">Amazon Gift Card</a>
+
+  <!-- Top Section -->
+  <h1>🔥 FREE FIRE TOURNAMENT 🔥</h1>
+  <button class="btn" onclick="document.getElementById('info').scrollIntoView({behavior: 'smooth'});">
+    Tournament Information
+  </button>
+
+  <!-- Info Section -->
+  <div id="info" style="margin-top: 50px;">
+    <h2>🏆 Tournament Information</h2>
+    <p><strong>Date:</strong> 29 August 2025 (Friday)</p>
+    <p><strong>Time:</strong> 3:30 PM Evening</p>
+    <p><strong>Entry Fee:</strong> ₹30 Amazon Gift Card</p>
+    <p><strong>Prize:</strong> ₹200 Play Store Code</p>
+    <p><strong>Registration:</strong> Starts 15 August 2025</p>
+  </div>
+
+  <!-- Countdown Timer -->
+  <div id="countdown">Loading countdown...</div>
+
+  <script>
+    // Countdown Script
+    var eventDate = new Date("Aug 29, 2025 15:30:00").getTime();
+
+    var x = setInterval(function() {
+      var now = new Date().getTime();
+      var distance = eventDate - now;
+
+      var days = Math.floor(distance / (1000 * 60 * 60 * 24));
+      var hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+      var minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+      var seconds = Math.floor((distance % (1000 * 60)) / 1000);
+
+      document.getElementById("countdown").innerHTML = 
+        days + "d " + hours + "h " + minutes + "m " + seconds + "s ";
+
+      if (distance < 0) {
+        clearInterval(x);
+        document.getElementById("countdown").innerHTML = "MATCH STARTED!";
+      }
+    }, 1000);
+  </script>
+
 </body>
 </html>
