@@ -3,53 +3,78 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Rules & Regulations</title>
+<title>Tournament Information</title>
 <style>
     body {
-        background-color: #5dade2;
+        background-color: #1b2a49;
         font-family: Arial, sans-serif;
         text-align: center;
         color: white;
+        margin: 0;
+        padding: 0;
     }
     h1 {
         margin-top: 30px;
+        text-shadow: 0 0 10px #00f7ff;
     }
-    ul {
-        list-style: none;
-        padding: 0;
-        font-size: 18px;
+    .countdown {
+        font-size: 2rem;
+        margin-top: 30px;
+        padding: 20px;
+        background: rgba(0,0,0,0.4);
+        display: inline-block;
+        border-radius: 10px;
+        box-shadow: 0 0 20px #00f7ff;
     }
-    li {
-        margin: 10px 0;
-    }
-    .btn {
-        display: block;
-        width: 250px;
-        margin: 20px auto;
-        padding: 15px;
-        background-color: white;
-        color: #2874a6;
-        font-size: 18px;
-        font-weight: bold;
-        border: 2px solid #2874a6;
-        border-radius: 8px;
+    a {
+        display: inline-block;
+        margin-top: 30px;
+        padding: 10px 20px;
+        background: #00f7ff;
+        color: black;
         text-decoration: none;
+        border-radius: 5px;
+        font-weight: bold;
         transition: 0.3s;
     }
-    .btn:hover {
-        background-color: #2874a6;
+    a:hover {
+        background: #0077ff;
         color: white;
     }
 </style>
 </head>
 <body>
-    <h1>Rules & Regulations</h1>
-    <ul>
-        <li>No hacking or cheating allowed.</li>
-        <li>Follow the tournament schedule.</li>
-        <li>Gift code entry is mandatory.</li>
-        <li>Respect other players.</li>
-    </ul>
-    <a class="btn" href="index.html">Back to Home</a>
+
+<h1>📅 Tournament Info</h1>
+<p>Date: <strong>29 August 2025</strong></p>
+<p>Time: <strong>3:30 PM (Evening)</strong></p>
+
+<div class="countdown" id="countdown"></div>
+
+<a href="index.html">⬅ Back to Home</a>
+
+<script>
+    // Set tournament date & time
+    var countDownDate = new Date("Aug 29, 2025 15:30:00").getTime();
+
+    var x = setInterval(function() {
+        var now = new Date().getTime();
+        var distance = countDownDate - now;
+
+        var days = Math.floor(distance / (1000 * 60 * 60 * 24));
+        var hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+        var minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+        var seconds = Math.floor((distance % (1000 * 60)) / 1000);
+
+        document.getElementById("countdown").innerHTML = days + "d " + hours + "h "
+        + minutes + "m " + seconds + "s ";
+
+        if (distance < 0) {
+            clearInterval(x);
+            document.getElementById("countdown").innerHTML = "MATCH STARTED!";
+        }
+    }, 1000);
+</script>
+
 </body>
 </html>
