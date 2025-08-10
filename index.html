@@ -1,83 +1,98 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-  <meta charset="UTF-8">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Free Fire Tournament</title>
   <style>
     body {
       font-family: Arial, sans-serif;
-      background-color: #001a4d; /* dark blue */
-      color: white;
       text-align: center;
-      padding: 20px;
+      background-color: #f8f8f8;
+      margin: 0;
+      padding: 0;
     }
-    .btn {<button onclick="window.location.href='tournament-info.html'" style="background-color: #002a80; color: white; padding: 12px 20px; font-size: 16px; border: none; border-radius: 8px; cursor: pointer;">
-      Tournament Information
-      </button>
-      background-color: #0040ff;
+    header {
+      background-color: #0055cc;
+      padding: 20px;
       color: white;
+      font-size: 24px;
+      font-weight: bold;
+    }
+    .btn {
+      display: inline-block;
+      margin: 10px;
       padding: 12px 20px;
+      font-size: 16px;
       border: none;
       border-radius: 8px;
-      font-size: 16px;
+      color: white;
+      background-color: #0055cc;
       cursor: pointer;
-      margin: 10px;
       transition: 0.3s;
     }
     .btn:hover {
-      background-color: #0033cc;
+      background-color: #0044aa;
+    }
+    .countdown-container {
+      margin-top: 50px;
+      font-size: 22px;
+      color: #0055cc;
     }
     #countdown {
-      font-size: 24px;
-      margin-top: 40px;
-      padding: 10px;
-      border: 2px solid #fff;
-      display: inline-block;
-      border-radius: 10px;
-      background-color: rgba(0,0,0,0.3);
+      font-size: 28px;
+      font-weight: bold;
+      margin-top: 10px;
     }
   </style>
 </head>
 <body>
 
-  <!-- Top Section -->
-  <h1>🔥 FREE FIRE TOURNAMENT 🔥</h1>
-  <button class="btn" onclick="document.getElementById('info').scrollIntoView({behavior: 'smooth'});">
+  <header>Free Fire Tournament</header>
+
+  <!-- Top Button for Tournament Info -->
+  <button class="btn" onclick="window.location.href='tournament-info.html'">
     Tournament Information
   </button>
 
-  <!-- Info Section -->
-  <div id="info" style="margin-top: 50px;">
-    <h2>🏆 Tournament Information</h2>
-    <p><strong>Date:</strong> 29 August 2025 (Friday)</p>
-    <p><strong>Time:</strong> 3:30 PM Evening</p>
-    <p><strong>Entry Fee:</strong> ₹30 Amazon Gift Card</p>
-    <p><strong>Prize:</strong> ₹200 Play Store Code</p>
-    <p><strong>Registration:</strong> Starts 15 August 2025</p>
+  <!-- Main Buttons -->
+  <button class="btn" onclick="window.location.href='https://forms.gle/ksXdsdaJd5NUhEdR6'">
+    Play Tournament
+  </button>
+
+  <button class="btn" onclick="window.location.href='tournament-info.html'">
+    Tournament Information
+  </button>
+
+  <button class="btn" onclick="window.location.href='add-tournament.html'">
+    Add Tournament
+  </button>
+
+  <!-- Countdown Section -->
+  <div class="countdown-container">
+    <p>Match Starts In:</p>
+    <div id="countdown"></div>
   </div>
 
-  <!-- Countdown Timer -->
-  <div id="countdown">Loading countdown...</div>
-
+  <!-- Countdown Script -->
   <script>
-    // Countdown Script
-    var eventDate = new Date("Aug 29, 2025 15:30:00").getTime();
+    var matchDate = new Date(2025, 7, 29, 15, 30, 0).getTime();
 
-    var x = setInterval(function() {
+    var countdownFunction = setInterval(function() {
       var now = new Date().getTime();
-      var distance = eventDate - now;
-
-      var days = Math.floor(distance / (1000 * 60 * 60 * 24));
-      var hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
-      var minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
-      var seconds = Math.floor((distance % (1000 * 60)) / 1000);
-
-      document.getElementById("countdown").innerHTML = 
-        days + "d " + hours + "h " + minutes + "m " + seconds + "s ";
+      var distance = matchDate - now;
 
       if (distance < 0) {
-        clearInterval(x);
         document.getElementById("countdown").innerHTML = "MATCH STARTED!";
+        clearInterval(countdownFunction);
+      } else {
+        var days = Math.floor(distance / (1000 * 60 * 60 * 24));
+        var hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+        var minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+        var seconds = Math.floor((distance % (1000 * 60)) / 1000);
+
+        document.getElementById("countdown").innerHTML =
+          days + "d " + hours + "h " + minutes + "m " + seconds + "s ";
       }
     }, 1000);
   </script>
