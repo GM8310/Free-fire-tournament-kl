@@ -1,101 +1,48 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Free Fire Tournament</title>
-  <style>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Free Fire Tournament</title>
+<style>
     body {
-      font-family: Arial, sans-serif;
-      text-align: center;
-      background-color: #f8f8f8;
-      margin: 0;
-      padding: 0;
+        background-color: #1b2a49; /* Light-dark blue */
+        font-family: Arial, sans-serif;
+        text-align: center;
+        color: white;
+        margin: 0;
+        padding: 0;
     }
-    header {
-      background-color: #0055cc;
-      padding: 20px;
-      color: white;
-      font-size: 24px;
-      font-weight: bold;
+    h1 {
+        margin-top: 40px;
+        font-size: 2.5rem;
+        text-shadow: 0 0 10px #00f7ff;
     }
     .btn {
-      display: inline-block;
-      margin: 10px;
-      padding: 12px 20px;
-      font-size: 16px;
-      border: none;
-      border-radius: 8px;
-      color: white;
-      background-color: #0055cc;
-      cursor: pointer;
-      transition: 0.3s;
+        display: block;
+        width: 250px;
+        margin: 20px auto;
+        padding: 15px;
+        background: linear-gradient(90deg, #00f7ff, #0077ff);
+        color: white;
+        font-size: 1.2rem;
+        text-decoration: none;
+        border-radius: 10px;
+        box-shadow: 0 0 15px #00f7ff;
+        transition: 0.3s;
     }
     .btn:hover {
-      background-color: #0044aa;
+        box-shadow: 0 0 30px #00f7ff, 0 0 50px #0077ff;
+        transform: scale(1.05);
     }
-    .countdown-container {
-      margin-top: 50px;
-      font-size: 22px;
-      color: #0055cc;
-    }
-    #countdown {
-      font-size: 28px;
-      font-weight: bold;
-      margin-top: 10px;
-    }
-  </style>
+</style>
 </head>
 <body>
 
-  <header>Free Fire Tournament</header>
-
-  <!-- Top Button for Tournament Info -->
-  <button class="btn" onclick="window.location.href='tournament-info.html'">
-    Tournament Information
-  </button>
-
-  <!-- Main Buttons -->
-  <button class="btn" onclick="window.location.href='https://forms.gle/ksXdsdaJd5NUhEdR6'">
-    Play Tournament
-  </button>
-
-  <button class="btn" onclick="window.location.href='tournament-info.html'">
-    Tournament Information
-  </button>
-
-  <button class="btn" onclick="window.location.href='add-tournament.html'">
-    Add Tournament
-  </button>
-
-  <!-- Countdown Section -->
-  <div class="countdown-container">
-    <p>Match Starts In:</p>
-    <div id="countdown"></div>
-  </div>
-
-  <!-- Countdown Script -->
-  <script>
-    var matchDate = new Date(2025, 7, 29, 15, 30, 0).getTime();
-
-    var countdownFunction = setInterval(function() {
-      var now = new Date().getTime();
-      var distance = matchDate - now;
-
-      if (distance < 0) {
-        document.getElementById("countdown").innerHTML = "MATCH STARTED!";
-        clearInterval(countdownFunction);
-      } else {
-        var days = Math.floor(distance / (1000 * 60 * 60 * 24));
-        var hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
-        var minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
-        var seconds = Math.floor((distance % (1000 * 60)) / 1000);
-
-        document.getElementById("countdown").innerHTML =
-          days + "d " + hours + "h " + minutes + "m " + seconds + "s ";
-      }
-    }, 1000);
-  </script>
+<h1>🔥 Free Fire eSports Tournament 🔥</h1>
+<a class="btn" href="registration.html">🏆 Tournament Registration</a>
+<a class="btn" href="tournament-info.html">ℹ Tournament Information</a>
+<a class="btn" href="gift-card.html">🎁 Get Amazon Gift Card</a>
 
 </body>
 </html>
